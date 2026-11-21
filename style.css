@@ -22,7 +22,7 @@ h1,h2,h3{line-height:1.2}
 .topstrip{background:var(--black);color:#ddd;font-size:.85rem;padding:7px 0}
 .topstrip .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
 .topstrip a:hover{color:var(--yellow)}
-header{background:var(--white);position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+header{background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 14px rgba(0,0,0,.3)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
 .brand{display:flex;align-items:center;gap:10px}
 .brand svg{width:46px;height:46px}
@@ -30,10 +30,12 @@ header{background:var(--white);position:sticky;top:0;z-index:50;box-shadow:0 2px
 .brand small{color:var(--orange);font-weight:600;font-size:.72rem}
 nav ul{display:flex;gap:6px;list-style:none;align-items:center}
 nav a{padding:9px 14px;border-radius:8px;font-weight:600;font-size:.95rem}
-nav a:hover{background:var(--light)}
-nav a.active{background:var(--black);color:var(--yellow)}
-nav a.cta{background:var(--yellow);color:var(--black)}
-.menu-btn{display:none;background:none;border:0;font-size:1.8rem;cursor:pointer}
+nav a{color:#fff}
+nav a:hover{background:rgba(255,255,255,.15)}
+nav a.active{background:var(--yellow);color:var(--black)}
+nav a.cta{background:var(--orange);color:var(--black)}
+nav a.active.cta{background:var(--yellow)}
+.menu-btn{display:none;background:none;border:0;font-size:1.8rem;cursor:pointer;color:#fff}
 
 /* buttons */
 .btn{display:inline-block;padding:13px 28px;border-radius:10px;font-weight:700;border:2px solid transparent;cursor:pointer;font-size:1rem;transition:.2s}
@@ -59,7 +61,7 @@ nav a.cta{background:var(--yellow);color:var(--black)}
 .hero-card li::before{content:"✔";position:absolute;left:0;color:var(--orange)}
 
 /* page banner */
-.banner{background:var(--black);color:#fff;padding:60px 0;position:relative;overflow:hidden;text-align:center}
+.banner{background:linear-gradient(rgba(10,10,10,.8),rgba(10,10,10,.8)),url('images/banner-bg.jpg') center/cover,var(--black);color:#fff;padding:60px 0;position:relative;overflow:hidden;text-align:center}
 .banner::after{content:"";position:absolute;inset:auto 0 0 0;height:8px;background:linear-gradient(90deg,var(--yellow),var(--orange))}
 .banner h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900}
 .banner h1 span{color:var(--yellow)}
@@ -165,7 +167,7 @@ footer a:hover{color:var(--yellow)}
 }
 @media(max-width:700px){
   .menu-btn{display:block}
-  nav ul{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;padding:14px;box-shadow:0 10px 20px rgba(0,0,0,.1);align-items:stretch}
+  nav ul{display:none;position:absolute;left:0;right:0;top:100%;background:rgba(0,0,0,.88);flex-direction:column;padding:14px;box-shadow:0 10px 20px rgba(0,0,0,.1);align-items:stretch}
   nav ul.open{display:flex}
   .nav{position:relative}
   .g2,.g3,.g4,.row,.foot,.gallery{grid-template-columns:1fr}
