@@ -41,7 +41,7 @@
       <a class="btn btn-outline" href="gallery.html">View Our Work</a>
     </div>
   </div>
-  <form class="quote" id="enquiry">
+  <form class="quote" id="enquiry" action="send-mail.php" method="post">
     <h3 id="quote">Get A Free Quote</h3>
     <p class="sub">Tell us what you need — we'll call you back.</p>
     <input name="name" required placeholder="Your name">
@@ -55,7 +55,7 @@
     </select>
     <textarea name="message" placeholder="Brief about your requirement"></textarea>
     <button class="btn btn-primary" type="submit">Request Callback</button>
-    <div class="form-msg">Thank you! Your email app will open with your enquiry ready to send.</div>
+    <div class="form-msg" role="status" aria-live="polite"></div>
   </form>
 </div></section>
 

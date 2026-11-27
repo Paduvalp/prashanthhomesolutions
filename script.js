@@ -33,7 +33,7 @@ if (form) form.addEventListener('submit', async e => {
 
   if (!url) {
     const body = `Name: ${d.get('name')}\nPhone: ${d.get('phone')}\nService: ${d.get('service')}\n\n${d.get('message')}`;
-    window.location.href = 'mailto:prashanthhomesolutions@gmail.com?subject=' +
+    window.location.href = 'mailto:prashanthhomesolutions02@gmail.com?subject=' +
       encodeURIComponent('Enquiry: ' + d.get('service')) + '&body=' + encodeURIComponent(body);
     msg.style.display = 'block';
     return;
