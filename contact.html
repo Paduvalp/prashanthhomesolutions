@@ -44,11 +44,11 @@
       <p style="color:#bbb;margin-top:24px">Tell us about your project and we'll get back to you quickly.</p>
     </div>
 
-    <form id="enquiry">
+    <form id="enquiry" action="send-mail.php" method="post">
       <h3>Request A Free Quote</h3>
       <div class="row">
-        <div><label for="name">Your Name</label><input id="name" name="name" required placeholder="Full name"></div>
-        <div><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" required placeholder="Mobile number"></div>
+        <div><label for="name">Your Name</label><input id="name" name="name" required maxlength="80" placeholder="Full name"></div>
+        <div><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" required maxlength="20" placeholder="Mobile number"></div>
       </div>
       <label for="service">Service Needed</label>
       <select id="service" name="service">
@@ -60,9 +60,11 @@
         <option>Home / Flat Renovation</option><option>Home Loans</option><option>Other</option>
       </select>
       <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Tell us about your requirement"></textarea>
+      <textarea id="message" name="message" maxlength="2000" placeholder="Tell us about your requirement"></textarea>
+      <!-- Spam trap: leave this hidden field in place -->
+      <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-primary" type="submit">Send Enquiry</button>
-      <div class="form-msg">Thank you! Your email app will open with your enquiry ready to send.</div>
+      <div class="form-msg" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>

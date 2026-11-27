@@ -22,13 +22,41 @@ if (lb) {
   lb.addEventListener('click', () => lb.classList.remove('open'));
 }
 
-// Contact form -> opens email app with details filled in
+// Enquiry forms.
+// A form with an "action" (contact.html) is sent by PHP; one without opens the email app.
 const form = document.getElementById('enquiry');
-if (form) form.addEventListener('submit', e => {
+if (form) form.addEventListener('submit', async e => {
   e.preventDefault();
   const d = new FormData(form);
-  const body = `Name: ${d.get('name')}\nPhone: ${d.get('phone')}\nService: ${d.get('service')}\n\n${d.get('message')}`;
-  window.location.href = 'mailto:prashanthhomesolutions@gmail.com?subject=' +
-    encodeURIComponent('Enquiry: ' + d.get('service')) + '&body=' + encodeURIComponent(body);
-  document.querySelector('.form-msg').style.display = 'block';
+  const msg = form.querySelector('.form-msg');
+  const url = form.getAttribute('action');
+
+  if (!url) {
+    const body = `Name: ${d.get('name')}\nPhone: ${d.get('phone')}\nService: ${d.get('service')}\n\n${d.get('message')}`;
+    window.location.href = 'mailto:prashanthhomesolutions@gmail.com?subject=' +
+      encodeURIComponent('Enquiry: ' + d.get('service')) + '&body=' + encodeURIComponent(body);
+    msg.style.display = 'block';
+    return;
+  }
+
+  const button = form.querySelector('button[type="submit"]');
+  const label = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Sending...';
+  msg.style.display = 'none';
+
+  let result;
+  try {
+    const res = await fetch(url, { method: 'POST', body: d, headers: { Accept: 'application/json' } });
+    result = await res.json();
+  } catch (err) {
+    result = { ok: false, message: 'Sorry, your enquiry could not be sent. Please call us on 9380989804 or message us on WhatsApp.' };
+  }
+
+  msg.textContent = result.message;
+  msg.classList.toggle('error', !result.ok);
+  msg.style.display = 'block';
+  if (result.ok) form.reset();
+  button.disabled = false;
+  button.textContent = label;
 });
